@@ -1,4 +1,6 @@
-export const API_BASE = "http://localhost:8000";
+// Backend URL. In production, set VITE_API_BASE (for example, in Vercel settings).
+// Without it, the app uses the local backend.
+export const API_BASE = import.meta.env.VITE_API_BASE ?? "http://localhost:8000";
 
 export type OptionType = "call" | "put";
 

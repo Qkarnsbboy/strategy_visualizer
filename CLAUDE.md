@@ -84,7 +84,11 @@ When extending this codebase:
 
 ### CORS
 
-`main.py` allows exactly `http://localhost:5173`. If you change the frontend dev port or add a deployed origin, update `allow_origins` in `main.py`.
+`main.py` always allows `http://localhost:5173`. It also allows each origin in the `ALLOWED_ORIGINS` env var (comma-separated, for example the deployed Vercel URL). If you change the frontend dev port, update `LOCAL_DEV_ORIGIN` in `main.py`.
+
+### API base URL
+
+`frontend/src/lib/api.ts` reads `VITE_API_BASE` at build time. It falls back to `http://localhost:8000` when the variable is not set. Set it in the frontend host (for example Vercel) to the deployed backend URL.
 
 ### Frontend module layout assumption
 
